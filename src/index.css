@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
@@ -30,14 +31,14 @@
   border: 1px solid #525252;
   border-radius: 7px;
   padding: 8px 20px 8px 20px;
-  cursor: pointer;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75),
     inset 0px 0px 5px 1px rgba(0, 0, 0, 0.27);
   transition: ease-in-out 0.3s;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
-.btn1:hover {
+
+.btn1-hover:hover {
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75),
     inset 0px 0px 5px 4px rgba(0, 0, 0, 0.27);
 }
