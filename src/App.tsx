@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Login from "./views/login/login";
@@ -10,7 +9,7 @@ function App() {
     <Routes key={location.pathname} location={location}>
       <Route path="/login" element={<Login />} />
       <Route element={<Layout />}>
-      <Route path="/feed" element={<Feed /> } />
+        <Route path="/feed" element={<Feed />} />
       </Route>
     </Routes>
   );

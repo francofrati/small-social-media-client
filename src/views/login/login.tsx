@@ -5,36 +5,38 @@ import axios, { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const [logging, setLogging] = useState<boolean>(false)
+  const [logging, setLogging] = useState<boolean>(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = useCallback(async (loginData: LoginBody) => {
     try {
-      setLogging(true)
-      const { status, data } = await axios.post<LoginBody, AxiosResponse<string, any>>(loginUrl, loginData,{withCredentials:true})
+      setLogging(true);
+      const { status, data } = await axios.post<
+        LoginBody,
+        AxiosResponse<string, any>
+      >(loginUrl, loginData, { withCredentials: true });
 
-      if (status === 200) navigate('/feed')
-      else alert(JSON.stringify(data))
-
+      if (status === 200) navigate("/feed");
+      else alert(JSON.stringify(data));
     } catch (error) {
-      alert(JSON.stringify(error))
-    }finally{
-      setLogging(false)
+      alert(JSON.stringify(error));
+    } finally {
+      setLogging(false);
     }
-  }, [])
+  }, []);
 
   return (
-    <main className="max-w-lg">
+    <main className="max-w-lg mx-auto px-3">
       <h1 className="text-center text-[50px]">SMALL SOCIAL MEDIA</h1>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
 
-          await handleLogin({ email: email, password: password })
+          await handleLogin({ email: email, password: password });
         }}
         className="flex flex-col gap-10 "
       >
@@ -64,7 +66,9 @@ function Login() {
             className="w-full py-2 px-2 border border-[#525252] rounded-lg"
           />
         </label>
-        <Btn1 type="submit" disabled={logging}>Sign In</Btn1>
+        <Btn1 type="submit" disabled={logging}>
+          Sign In
+        </Btn1>
       </form>
     </main>
   );

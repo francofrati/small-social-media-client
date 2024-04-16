@@ -15,7 +15,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="w-full  px-4 pt-4">
+      <nav className="w-full max-w-6xl px-4 pt-4 mx-auto">
         <section className="h-16 flex justify-between items-center shadow-xl rounded-full py-2 px-2 bg-[#383838]">
           <section className="ml-6 font-bold leading-[18px] cursor-pointer text-[#242424]">
             <p>Small</p>
