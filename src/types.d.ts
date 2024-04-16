@@ -16,4 +16,7 @@ export interface Post {
   postedBy: number;
   username: string;
   profileImg: string;
+  lastComment: string | null;
+  lastCommentUsername: string | null;
+  totalComments: number | null;
 }

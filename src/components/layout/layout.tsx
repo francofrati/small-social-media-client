@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../navbar/navbar";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import useAuthStore from "../../stores/authStore";
 import useFollowersStore from "../../stores/followersStore";
 import CustomModal from "../customModal/customModal";
