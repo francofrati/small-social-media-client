@@ -10,7 +10,7 @@ function Navbar() {
 
   const profileImage = useAuthStore((state) => state.profileImg);
   const { followRequests, followers, followed } = useFollowersStore(
-    (state) => state
+    (state) => state,
   );
 
   return (

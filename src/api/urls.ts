@@ -17,3 +17,7 @@ export interface UserContactsResponse {
 export const userContacts = `${apiBaseUrl}/user/contacts`;
 
 export const userFeedUrl = `${apiBaseUrl}/feed/user`;
+
+export const commentPostUrl = `${apiBaseUrl}/post/comment`;
+
+export const getPostCommentsUrl = (postId: number) => `${apiBaseUrl}/post/${postId}/comments`

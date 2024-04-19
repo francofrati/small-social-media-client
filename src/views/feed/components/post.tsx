@@ -1,38 +1,40 @@
-import { Post } from "../../../types";
-import { FaHeart } from "react-icons/fa";
-import { FaComment } from "react-icons/fa";
+import { Post } from '../../../types';
+import { FaHeart } from 'react-icons/fa';
+import { FaComment } from 'react-icons/fa';
 
-function FeedPost({
-  content,
-  imageUrl,
-  username,
-  profileImg,
-  lastComment,
-  lastCommentUsername,
-  totalComments,
-}: Post) {
+interface FeedPostProps {
+  post: Post;
+  openPostDetail: (post: Post) => Promise<void>;
+}
+
+function FeedPost({ post, openPostDetail }: FeedPostProps) {
   return (
     <div className="shadow-xls bg-[#383838]s rounded-xl w-full">
       <section className="flex items-center gap-3 my-4">
-        {profileImg ? (
+        {post.profileImg ? (
           <img
             className="w-12 h-12 rounded-full object-cover shadow-xl"
-            src={profileImg}
+            src={post.profileImg}
           />
         ) : (
           <></>
         )}
-        <div className="text-[#ffffff] font-semibold text-xl">{username}</div>
+        <div className="text-[#ffffff] font-semibold text-xl">
+          {post.username}
+        </div>
       </section>
-      <div className=" pb-4">{content}</div>
-      {imageUrl ? (
-        <img className="rounded-xl mb-4 w-full" src={imageUrl} />
+      <div className=" pb-4">{post.content}</div>
+      {post.imageUrl ? (
+        <img className="rounded-xl mb-4 w-full" src={post.imageUrl} />
       ) : (
         <></>
       )}
       <div className="flex gap-4 pr-8 pb-4">
         <FaComment
           size={30}
+          onClick={async () => {
+            await openPostDetail(post);
+          }}
           color="#4f4f4f"
           className="hover:fill-white transition-all cursor-pointer"
         />
@@ -42,16 +44,16 @@ function FeedPost({
           className="hover:fill-white transition-all cursor-pointer"
         />
       </div>
-      {lastComment ? (
+      {post.lastComment ? (
         <section>
-          {totalComments && totalComments > 1 ? (
-            <p className="opacity-70">View all {totalComments} comments</p>
+          {post.totalComments && post.totalComments > 1 ? (
+            <p className="opacity-70">View all {post.totalComments} comments</p>
           ) : (
             <></>
           )}
           <p>
-            <b>{lastCommentUsername} </b>
-            {lastComment}
+            <b>{post.lastCommentUsername} </b>
+            {post.lastComment}
           </p>
         </section>
       ) : (

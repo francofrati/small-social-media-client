@@ -19,4 +19,13 @@ export interface Post {
   lastComment: string | null;
   lastCommentUsername: string | null;
   totalComments: number | null;
+  comments?: PostComment[];
+}
+
+export interface PostComment {
+  content: string;
+  username: string;
+  profileImg: string;
+  postId: number,
+  commentId,
 }
