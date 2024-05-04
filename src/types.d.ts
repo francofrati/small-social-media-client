@@ -26,6 +26,12 @@ export interface PostComment {
   content: string;
   username: string;
   profileImg: string;
-  postId: number,
-  commentId,
+  postId: number;
+  commentId;
+}
+
+export interface PostLike {
+  username: string;
+  profileImg: string;
+  createdAt: string;
 }

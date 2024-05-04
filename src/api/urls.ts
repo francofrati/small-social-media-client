@@ -1,5 +1,5 @@
-import { User } from "../types";
-import { apiBaseUrl } from "./config";
+import { User } from '../types';
+import { apiBaseUrl } from './config';
 
 export interface LoginBody {
   email: string;
@@ -20,4 +20,10 @@ export const userFeedUrl = `${apiBaseUrl}/feed/user`;
 
 export const commentPostUrl = `${apiBaseUrl}/post/comment`;
 
-export const getPostCommentsUrl = (postId: number) => `${apiBaseUrl}/post/${postId}/comments`
+export const getPostCommentsUrl = (postId: number) =>
+  `${apiBaseUrl}/post/${postId}/comments`;
+
+export const getPostLikesUrl = (postId: number) =>
+  `${apiBaseUrl}/post/${postId}/likes`;
+
+export const likePostUrl = `${apiBaseUrl}/post/like`;

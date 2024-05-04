@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 interface CustomModalProps {
   handleClose: any;
@@ -25,7 +25,7 @@ function CustomModal({ handleClose, children }: CustomModalProps) {
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className="p-5 rounded-xl shadow-xl bg-[#383838]  absolute left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2"
+        className="p-5 rounded-xl shadow-xl bg-[#383838]  absolute left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2 max-h-[80dvh] overflow-scroll hideScrollbar"
       >
         {children}
       </div>

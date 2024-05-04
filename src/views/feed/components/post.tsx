@@ -1,6 +1,8 @@
 import { Post } from '../../../types';
 import { FaHeart } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
+import PostComment from '../../../components/post/postComment';
+import useFeedStore from '../../../stores/feedStore';
 
 interface FeedPostProps {
   post: Post;
@@ -8,6 +10,7 @@ interface FeedPostProps {
 }
 
 function FeedPost({ post, openPostDetail }: FeedPostProps) {
+  const likePost = useFeedStore((state) => state.likePost);
   return (
     <div className="shadow-xls bg-[#383838]s rounded-xl w-full">
       <section className="flex items-center gap-3 my-4">
@@ -40,6 +43,9 @@ function FeedPost({ post, openPostDetail }: FeedPostProps) {
         />
         <FaHeart
           size={30}
+          onClick={async () => {
+            await likePost(post.postId);
+          }}
           color="#4f4f4f"
           className="hover:fill-white transition-all cursor-pointer"
         />
@@ -47,14 +53,26 @@ function FeedPost({ post, openPostDetail }: FeedPostProps) {
       {post.lastComment ? (
         <section>
           {post.totalComments && post.totalComments > 1 ? (
-            <p className="opacity-70">View all {post.totalComments} comments</p>
+            <button
+              onClick={async () => {
+                await openPostDetail(post);
+              }}
+              type="button"
+              className="opacity-70"
+            >
+              View all {post.totalComments} comments
+            </button>
           ) : (
             <></>
           )}
-          <p>
+          <PostComment
+            comment={post.lastComment}
+            username={post.lastCommentUsername as string}
+          />
+          {/* <p>
             <b>{post.lastCommentUsername} </b>
             {post.lastComment}
-          </p>
+          </p> */}
         </section>
       ) : (
         <></>
