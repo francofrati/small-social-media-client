@@ -8,8 +8,12 @@ export interface User {
   email?: string;
 }
 
+export type PostId = number
+export type IsLikedByUser = boolean
+export type Likes = number
+
 export interface Post {
-  postId: number;
+  postId: PostId;
   createdAt: string;
   content: string;
   imageUrl: string | null;
@@ -19,6 +23,8 @@ export interface Post {
   lastComment: string | null;
   lastCommentUsername: string | null;
   totalComments: number | null;
+  likes: Likes;
+  isLikedByUser: IsLikedByUser;
   comments?: PostComment[];
 }
 

@@ -79,6 +79,7 @@ const useFeedStore = create<FeedStoreTypes>((set, get) => ({
         { withCredentials: true }
       );
       await get().setPostLikes(postId);
+      await get().setFeed();
     } catch (error) {
       console.error(error);
     }

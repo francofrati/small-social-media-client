@@ -22,7 +22,7 @@ function PostDetailModal({
   const [newComment, setNewComment] = useState<string>('');
   return (
     <CustomModal handleClose={handleClose}>
-      <div className="max-w-4xl">
+      <div className="max-w-4xl w-[80dvw]">
         <PostHeader
           profileImg={post?.profileImg as string}
           username={post?.username as string}

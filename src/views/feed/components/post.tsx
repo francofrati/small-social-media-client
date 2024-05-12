@@ -1,8 +1,7 @@
 import { Post } from '../../../types';
-import { FaHeart } from 'react-icons/fa';
 import { FaComment } from 'react-icons/fa';
 import PostComment from '../../../components/post/postComment';
-import useFeedStore from '../../../stores/feedStore';
+import PostLike from '../../../components/post/postLike';
 
 interface FeedPostProps {
   post: Post;
@@ -10,7 +9,6 @@ interface FeedPostProps {
 }
 
 function FeedPost({ post, openPostDetail }: FeedPostProps) {
-  const likePost = useFeedStore((state) => state.likePost);
   return (
     <div className="shadow-xls bg-[#383838]s rounded-xl w-full">
       <section className="flex items-center gap-3 my-4">
@@ -33,18 +31,15 @@ function FeedPost({ post, openPostDetail }: FeedPostProps) {
         <></>
       )}
       <div className="flex gap-4 pr-8 pb-4">
+        <PostLike
+          postId={post.postId}
+          isLikedByUser={post.isLikedByUser}
+          likes={post.likes}
+        />
         <FaComment
           size={30}
           onClick={async () => {
             await openPostDetail(post);
-          }}
-          color="#4f4f4f"
-          className="hover:fill-white transition-all cursor-pointer"
-        />
-        <FaHeart
-          size={30}
-          onClick={async () => {
-            await likePost(post.postId);
           }}
           color="#4f4f4f"
           className="hover:fill-white transition-all cursor-pointer"
