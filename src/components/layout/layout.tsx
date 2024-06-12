@@ -1,10 +1,11 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "../navbar/navbar";
-import { Fragment, useEffect } from "react";
-import useAuthStore from "../../stores/authStore";
-import useFollowersStore from "../../stores/followersStore";
-import CustomModal from "../customModal/customModal";
-import useFeedStore from "../../stores/feedStore";
+import { Outlet } from 'react-router-dom';
+import Navbar from '../navbar/navbar';
+import { Fragment, useEffect } from 'react';
+import useAuthStore from '../../stores/authStore';
+import useFollowersStore from '../../stores/followersStore';
+import CustomModal from '../customModal/customModal';
+import useFeedStore from '../../stores/feedStore';
+import Messages from '../messages/messages';
 
 function Layout() {
   const authStore = useAuthStore((state) => state);
@@ -19,6 +20,7 @@ function Layout() {
     <>
       <Navbar />
       <Outlet />
+      <Messages />
     </>
   );
 }
