@@ -3,6 +3,7 @@ import useFeedStore from '../../stores/feedStore';
 import FeedPost from './components/post';
 import { Post } from '../../types';
 import PostDetailModal from './components/postDetailModal';
+import AddPost from './components/addPost';
 
 function Feed() {
   const [postDetailModal, setPostDetailModal] = useState<boolean>(false);
@@ -27,8 +28,8 @@ function Feed() {
 
   return (
     <>
-      <div className="text-center ">Feed</div>
       <section className="flex flex-col gap-5 px-5 items-center max-w-4xl mx-auto">
+      <AddPost />
         {feed.length ? (
           feed.map((post) => (
             <React.Fragment key={post.postId}>

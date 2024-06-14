@@ -4,6 +4,8 @@ import useFeedStore from '../../../stores/feedStore';
 import PostComment from '../../../components/post/postComment';
 import PostHeader from '../../../components/post/postHeader';
 import PostContent from '../../../components/post/postContent';
+import PostLike from '../../../components/post/postLike';
+import { Post } from '../../../types';
 
 function PostDetailModal({
   postId,
@@ -13,7 +15,7 @@ function PostDetailModal({
   handleClose: () => void;
 }) {
   const feed = useFeedStore((state) => state.feed);
-  const post = feed.find((post) => post.postId === postId);
+  const post = feed.find((post) => post.postId === postId) as Post;
   const postComments = useFeedStore((state) => state.getPostComments)(
     postId as number
   );
@@ -31,6 +33,9 @@ function PostDetailModal({
           content={post?.content as string}
           imageUrl={post?.imageUrl as string}
         />
+        <section className='pb-4'>
+          <PostLike isLikedByUser={post?.isLikedByUser} likes={post?.likes} postId={post?.postId}/>
+        </section>
         <form
           onSubmit={async (e) => {
             try {
