@@ -27,3 +27,5 @@ export const getPostLikesUrl = (postId: number) =>
   `${apiBaseUrl}/post/${postId}/likes`;
 
 export const likePostUrl = `${apiBaseUrl}/post/like`;
+
+export const getChatsUrl = `${apiBaseUrl}/chat`;
