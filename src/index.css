@@ -39,17 +39,33 @@
   font-weight: 600;
 }
 
-.btn1-hover:hover {
+.btn1-alter {
+  background-color: #383838;
+  outline: none;
+  border: 1px solid #525252;
+  box-shadow:
+    0px 0px 2px 0px rgba(0, 0, 0, 0.75),
+    inset 0px 0px 5px 1px rgba(0, 0, 0, 0.27);
+  transition: ease-in-out 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.btn1-hover:hover,
+.btn1-alter:hover {
   box-shadow:
     0px 0px 6px 0px rgba(0, 0, 0, 0.75),
     inset 0px 0px 5px 4px rgba(0, 0, 0, 0.27);
 }
+
 .hideScrollbar::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hideScrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
