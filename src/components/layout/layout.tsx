@@ -17,7 +17,7 @@ function Layout() {
     authStore.setData();
     followersStore.setData();
     feedStore.setFeed();
-    chatStore.setChats();
+    chatStore.setChatBoxChats();
   }, []);
   return (
     <>

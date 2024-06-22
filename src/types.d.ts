@@ -2,6 +2,7 @@ export type Username = string;
 export type ChatRoomId = number;
 export type ProfileImg = string;
 export type MessageContent = string;
+export type MessageId = number;
 export type CreatedAt = string;
 export type UserId = number;
 
@@ -56,4 +57,12 @@ export interface Chat {
   chatRoomId: ChatRoomId;
   lastMessage: MessageContent;
   lastMessageCreatedAt: CreatedAt;
+}
+
+export interface Message {
+  username: Username;
+  chatRoomId: ChatRoomId;
+  message: MessageContent;
+  createdAt: CreatedAt;
+  messageId: MessageId;
 }

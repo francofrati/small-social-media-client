@@ -1,4 +1,4 @@
-import { User } from '../types';
+import { ChatRoomId, User } from '../types';
 import { apiBaseUrl } from './config';
 
 export interface LoginBody {
@@ -29,3 +29,6 @@ export const getPostLikesUrl = (postId: number) =>
 export const likePostUrl = `${apiBaseUrl}/post/like`;
 
 export const getChatsUrl = `${apiBaseUrl}/chat`;
+
+export const getChatUrl = (chatRoomId: ChatRoomId) =>
+  `${apiBaseUrl}/chat/${chatRoomId}`;
