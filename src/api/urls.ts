@@ -32,3 +32,6 @@ export const getChatsUrl = `${apiBaseUrl}/chat`;
 
 export const getChatUrl = (chatRoomId: ChatRoomId) =>
   `${apiBaseUrl}/chat/${chatRoomId}`;
+
+export const sendMessageUrl = (chatRoomId: ChatRoomId) =>
+  `${apiBaseUrl}/chat/${chatRoomId}/send`;

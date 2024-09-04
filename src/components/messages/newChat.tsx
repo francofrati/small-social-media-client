@@ -66,7 +66,10 @@ function NewChat() {
             {searchFollowed.length
               ? searchFollowed.map((user) => {
                   return (
-                    <section className="flex justify-start gap-4 items-center bg-[#4f4f4f] shadow-xl mb-3 last:mb-0 py-3 px-4 rounded-lg">
+                    <section
+                      key={user.username}
+                      className="flex justify-start gap-4 items-center bg-[#4f4f4f] shadow-xl mb-3 last:mb-0 py-3 px-4 rounded-lg"
+                    >
                       <img
                         src={user.profileImg}
                         className="rounded-full w-[30px] h-[30px] object-cover"

@@ -2,19 +2,41 @@ import { create } from 'zustand';
 
 import axios, { AxiosResponse } from 'axios';
 
-import { Chat, ChatRoomId, Message } from '../types';
+import {
+  Chat,
+  ChatRoomId,
+  Message,
+  MessageContent,
+  ProfileImg,
+  UserId,
+  Username,
+} from '../types';
 
-import { getChatsUrl, getChatUrl } from '../api/urls';
+import { getChatsUrl, getChatUrl, sendMessageUrl } from '../api/urls';
 
 interface ChatStoreTypes {
   chatBoxChats: Array<Chat>;
   getChatBoxChats: () => Promise<Array<Chat>>;
   setChatBoxChats: () => Promise<void>;
-  openChat: (chatRoomId: ChatRoomId) => void;
+  openChat: (
+    chatRoomId: ChatRoomId,
+    username: Username,
+    profileImg: ProfileImg
+  ) => void;
+  closeSelectedChat: () => void;
   getChat: (chatRoomId: ChatRoomId) => Promise<Array<Message>>;
   chats: { [chatRoomId: ChatRoomId]: Array<Message> };
   setChat: (chatRoomId: ChatRoomId) => Promise<void>;
-  selectedChat?: ChatRoomId;
+  selectedChat?: {
+    chatRoomId: ChatRoomId;
+    username: Username;
+    profileImg: ProfileImg;
+  };
+  sendMessage: (
+    chatRoomId: ChatRoomId,
+    receiverUsername: Username,
+    messageContent: MessageContent
+  ) => Promise<void>;
 }
 
 const useChatStore = create<ChatStoreTypes>((set, get) => ({
@@ -47,10 +69,24 @@ const useChatStore = create<ChatStoreTypes>((set, get) => ({
       },
     });
   },
-  openChat(chatRoomId) {
-    set({ selectedChat: chatRoomId });
+  openChat(chatRoomId, username, profileImg) {
+    set({ selectedChat: { chatRoomId, username, profileImg } });
+  },
+  closeSelectedChat() {
+    set({ selectedChat: undefined });
   },
   chats: {},
+  async sendMessage(chatRoomId, receiverUsername, messageContent) {
+    const body = {
+      receiverUsername,
+      content: messageContent,
+    };
+    await axios.post(sendMessageUrl(chatRoomId), body, {
+      withCredentials: true,
+    });
+
+    await get().setChat(chatRoomId);
+  },
 }));
 
 export default useChatStore;

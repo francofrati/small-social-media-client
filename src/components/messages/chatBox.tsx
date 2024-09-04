@@ -21,7 +21,7 @@ function ChatBox({ closeChatBox }: ChatBoxProps) {
         </button>
       </section>
       {chats.map((chat) => {
-        return <ChatBoxChat chat={chat} />;
+        return <ChatBoxChat key={chat.chatRoomId} chat={chat} />;
       })}
     </div>
   );

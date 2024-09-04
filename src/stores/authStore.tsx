@@ -1,23 +1,23 @@
-import axios from "axios";
-import { create } from "zustand";
-import { userInfoUrl } from "../api/urls";
-import { User } from "../types";
+import axios from 'axios';
+import { create } from 'zustand';
+import { userInfoUrl } from '../api/urls';
+import { User } from '../types';
 
 interface AuthStoreTypes {
   firstName: string;
   lastName: string;
   profileImg: string;
-  username: "";
+  username: string;
   email: string;
   setData: () => Promise<void>;
 }
 
 const useAuthStore = create<AuthStoreTypes>((set) => ({
-  email: "",
-  firstName: "",
-  lastName: "",
-  profileImg: "",
-  username: "",
+  email: '',
+  firstName: '',
+  lastName: '',
+  profileImg: '',
+  username: '',
   setData: async () => {
     const { data } = await axios.get<User>(userInfoUrl, {
       withCredentials: true,
@@ -27,6 +27,7 @@ const useAuthStore = create<AuthStoreTypes>((set) => ({
       firstName: data.firstName,
       lastName: data.lastName,
       profileImg: data.profileImg,
+      username: data.username,
     });
   },
 }));

@@ -13,7 +13,7 @@ function ChatBoxChat({ chat }: ChatBoxChatProps) {
       type="button"
       onClick={async () => {
         await chatStore.setChat(chat.chatRoomId);
-        chatStore.openChat(chat.chatRoomId);
+        chatStore.openChat(chat.chatRoomId, chat.username, chat.profileImg);
       }}
       className="flex flex-col items-start gap-3 bg-[#4f4f4f] shadow-xl mb-3 last:mb-0 py-3 px-4 rounded-lg w-full hover:scale-[101%] transition-all"
     >
